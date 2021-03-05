@@ -19,6 +19,10 @@ alter user 'rim' identified by 'rimdu93';
 alter user 'Simon' identified by 'rossini9521';
 
 
+
+
+
+
 #create user 'cda' identified by 'test';
 
 #alter user 'rim' identified by 'CHANGE TON MOT DE PASSE';

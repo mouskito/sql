@@ -22,7 +22,29 @@ create table employes(
         foreign key (DNO) references departements(DNO)
 );
 
+insert into departements (DNO) value (7);
+insert into employes (DNO) value (7);
+
+select * from employes;
 call ps_ajout_employes;
+
+
+#DROP # supprimer une BDD
+#DELETE # TABLE
+#TRUNCATE  #Supprimer les données 
+
+#Les privileges
+
+	select user from mysql.user;
+    
+    select current_user from mysql.user;
+    
+    create user 'zack' identified by 'test';
+    
+    grant all on *.* to 'zack';
+    
+    alter user 'root'@'localhost' identified by '';
+    alter user 'admin'@'localhost' identified by 'admin';
 
 #LES SQL
 
@@ -33,6 +55,8 @@ call ps_ajout_employes;
 #2- Donnez les noms des employés et 
 #les noms de leur département
 
+select enom, DNOM from employes as e, departements d
+where e.DNO = d.DNO;
 	select ENOM, DNOM from employes
     inner join departements on
     employes.DNO = departements.DNO;
@@ -58,9 +82,24 @@ call ps_ajout_employes;
     
 #5- Donnez les noms des employés travaillant dans un 
 #département avec au moins un ingénieur
-	SELECT ENOM FROM employes WHERE DNO IN(
+	
+    select * from employes where 
+    DNO = 1
+    and DNO = 2
+    or DNO = 3
+    or DNO = 4
+    or DNO = 5
+    or DNO = 6
+    or DNO = 7;
+    
+    select * from employes where DNO not IN (1,2,3,4,5,6);
+
+	SELECT ENOM FROM employes
+    WHERE DNO IN (
     SELECT DNO FROM employes WHERE PROF = "Ingénieur"
-);
+) ;
+#joss: 
+select ENOM  from employes e where PROF = 'Ingénieur';
 
 select ENOM from employes inner join departements
 on employes.DNO = departements.DNO
